@@ -1,0 +1,41 @@
+{
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "autoprefixer": "^10.4.20",
+    "browser-sync": "^3.0.2",
+    "css-loader": "^7.1.2",
+    "cssnano": "^7.0.6",
+    "del": "^6.1.1",
+    "gulp": "^5.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-changed": "^4.0.3",
+    "gulp-changed-in-place": "^2.3.0",
+    "gulp-debug": "^4.0.0",
+    "gulp-file-include": "^2.3.0",
+    "gulp-fonter": "^0.3.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^10.0.0",
+    "gulp-rev": "^9.0.0",
+    "gulp-rev-delete-original": "^0.2.3",
+    "gulp-rev-format": "^1.0.5",
+    "gulp-rev-rewrite": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-svg-sprite": "^2.0.3",
+    "gulp-ttf2woff2": "^4.0.1",
+    "gulp-webp": "^4.0.1",
+    "postcss": "^8.4.47",
+    "sass": "^1.78.0",
+    "style-loader": "^4.0.0",
+    "webpack-stream": "^7.0.0"
+  },
+  "browserslist": [
+    "last 10 versions"
+  ],
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+@import "./base/reset";
+
+@import "./partials/header";
+@import "./partials/svg-sprite";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: top;
+  max-width: 100%;
+}
+
+.some-back {
+  background-image: url("./img/01.jpg");
+}
