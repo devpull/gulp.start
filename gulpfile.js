@@ -20,7 +20,7 @@ const {
   buildHtml,
   buildJs,
   buildImg,
-  buildServe
+  buildServe,
 } = require("./gulp/build");
 
 const {
@@ -35,6 +35,9 @@ const {
   docsSvg,
 } = require("./gulp/docs");
 
+const { fonts2src, fontsScss } = require("./gulp/fonts");
+
+// Dev
 exports.devClean = devClean;
 exports.default = series(
   devSetEnv,
@@ -43,6 +46,7 @@ exports.default = series(
   parallel(devServe, devWatcher)
 );
 
+// Build
 exports.build = series(
   buildSetEnv,
   buildClean,
@@ -50,6 +54,7 @@ exports.build = series(
   parallel(buildServe)
 );
 
+// Docs
 exports.docs = series(
   docsClean,
   docsSvg,
@@ -58,3 +63,8 @@ exports.docs = series(
   docsRevisionRewrite,
   parallel(docsServe)
 );
+
+// Fonts
+exports.fonts = series(fonts2src, fontsScss);
+exports.fonts2src = fonts2src;
+exports.fontsScss = fontsScss;

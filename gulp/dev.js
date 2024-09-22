@@ -12,9 +12,6 @@ const fileInclude = require("gulp-file-include");
 const svgSprite = require("gulp-svg-sprite");
 const webp = require("gulp-webp");
 const imagemin = require("gulp-imagemin");
-// Fonts
-const fonter = require("gulp-fonter");
-const ttf2woff2 = require("gulp-ttf2woff2");
 // Debug
 const debug = require("gulp-debug");
 const plumber = require("gulp-plumber");
@@ -23,7 +20,7 @@ const buildPath = "./dev/";
 const buildCssPath = buildPath + "css/";
 const buildJsPath = buildPath + "js/";
 const buildImgPath = buildPath + "img/";
-const buildFontsPath = buildPath + "fonts/";
+const buildFontsPath = buildPath + "font/";
 const mainScss = "./src/scss/main.scss";
 
 // --- Tasks
@@ -39,19 +36,19 @@ function clean(done) {
 }
 
 function fonts() {
-  return src("./src/fonts/*")
-    .pipe(
-      fonter({
-        formats: ["woff", "ttf"],
-      })
-    )
-    .pipe(ttf2woff2())
+  return src("./src/font/*.{woff,woff2}", { encoding: false })
+    .pipe(changed(buildFontsPath))
     .pipe(dest(buildFontsPath));
 }
 
 function css() {
   return src(mainScss, { sourcemaps: true })
-    .pipe(sass().on("error", sass.logError))
+    .pipe(
+      sass({ silenceDeprecations: ["legacy-js-api"] }).on(
+        "error",
+        sass.logError
+      )
+    )
     .pipe(dest(buildCssPath, { sourcemaps: true }))
     .pipe(browserSync.stream());
 }
@@ -143,9 +140,10 @@ function watcher() {
     "change",
     browserSync.reload
   );
-  watch(["./src/scss/**/*.scss"], css);
-  watch(["./src/js/**/*.js"], js);
-  watch(["./src/img/**/*"], img).on("change", browserSync.reload);
+  watch("./src/scss/**/*.scss", css);
+  watch("./src/js/**/*.js", js);
+  watch("./src/img/**/*", img).on("change", browserSync.reload);
+  watch("./src/font/*.{woff,woff2}", fonts).on("change", browserSync.reload);
 }
 
 function serve() {

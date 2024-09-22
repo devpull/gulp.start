@@ -1,0 +1,18 @@
+@font-face {
+	font-family: 'Seravek';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: local(''),
+	url("../font/Seravek-Bold.woff2") format("woff2"),
+	url("../font/Seravek-Bold.woff") format("woff");
+}
+@font-face {
+	font-family: 'Sfuitext';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: local(''),
+	url("../font/SFUIText-Regular.woff2") format("woff2"),
+	url("../font/SFUIText-Regular.woff") format("woff");
+}
