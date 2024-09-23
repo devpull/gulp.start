@@ -95,7 +95,7 @@ function serve() {
 
 function revisionHash() {
   return src(`${buildPath}**/*.{css,js}`)
-    .pipe(src(`${buildPath}**/*.{jpg,jpeg,gif,png,webp}`, { encoding: false }))
+    .pipe(src(`${buildPath}**/*.{jpg,jpeg,gif,png,webp,svg}`, { encoding: false }))
     .pipe(rev())
     .pipe(
       revFormat({
@@ -117,9 +117,34 @@ function revisionRewrite() {
 }
 
 const svgConfig = {
+  shape: {
+    dimension: {
+      maxWidth: 32,
+      maxHeight: 32,
+    },
+    spacing: {
+      padding: 5,
+    },
+    transform: [
+      {
+        svgo: {
+          plugins: [
+            {
+              name: "removeAttrs",
+              params: {
+                attrs: "(fill|stroke)",
+              },
+            },
+          ],
+        },
+      },
+    ],
+    // dest: "./shaped/",
+  },
   mode: {
-    stack: {
-      sprite: "../sprite.svg",
+    symbol: {
+      sprite: "../symbol.sprite.svg",
+      example: false,
     },
   },
 };
