@@ -21,7 +21,6 @@ const buildCssPath = buildPath + "css/";
 const buildJsPath = buildPath + "js/";
 const buildImgPath = buildPath + "img/";
 const buildFontsPath = buildPath + "font/";
-const mainScss = "./src/scss/main.scss";
 
 // --- Tasks
 
@@ -42,7 +41,7 @@ function fonts() {
 }
 
 function css() {
-  return src(mainScss, { sourcemaps: true })
+  return src("./src/scss/main.scss", { sourcemaps: true })
     .pipe(
       sass({ silenceDeprecations: ["legacy-js-api"] }).on(
         "error",
