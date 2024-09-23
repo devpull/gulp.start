@@ -16,11 +16,14 @@ const {
 const {
   buildSetEnv,
   buildClean,
+  buildFonts,
   buildCss,
   buildHtml,
   buildJs,
   buildImg,
   buildServe,
+  buildSvg,
+  buildMinCss,
 } = require("./gulp/build");
 
 const {
@@ -50,7 +53,8 @@ exports.default = series(
 exports.build = series(
   buildSetEnv,
   buildClean,
-  parallel(buildCss, buildHtml, buildJs, buildImg),
+  buildSvg,
+  parallel(buildFonts, buildCss, buildMinCss, buildHtml, buildJs, buildImg),
   parallel(buildServe)
 );
 

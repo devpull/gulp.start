@@ -135,13 +135,16 @@ function svg() {
 }
 
 function watcher() {
-  watch(["./src/html/**/*.html", "./src/html/**/*.json"], html).on(
+  watch(["./src/html/**/*.{html,json}"], html).on(
     "change",
     browserSync.reload
   );
   watch("./src/scss/**/*.scss", css);
   watch("./src/js/**/*.js", js);
-  watch("./src/img/**/*", img).on("change", browserSync.reload);
+  watch(["./src/img/**/*", "!./src/img/svg/*"], img).on(
+    "change",
+    browserSync.reload
+  );
   watch("./src/font/*.{woff,woff2}", fonts).on("change", browserSync.reload);
 }
 

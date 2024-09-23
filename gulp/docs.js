@@ -31,7 +31,6 @@ const buildPath = "./docs/";
 const buildCssPath = buildPath + "css/";
 const buildJsPath = buildPath + "js/";
 const buildImgPath = buildPath + "img/";
-const mainScss = "./src/scss/main.scss";
 
 // --- Tasks
 
@@ -43,7 +42,7 @@ function clean(done) {
 function css() {
   const plugins = [autoprefixer(), cssnano()];
 
-  return src(mainScss, { sourcemaps: true })
+  return src("./src/scss/main.scss", { sourcemaps: true })
     .pipe(sass().on("error", sass.logError))
     .pipe(postCss(plugins))
     .pipe(dest(buildCssPath, { sourcemaps: true }));
@@ -72,7 +71,6 @@ function js() {
     .pipe(babel())
     .pipe(webpackStream(require("./../webpack.config")))
     .pipe(changedInPlace({ firstPass: true }))
-    .pipe(debug({ title: "dev-js: " }))
     .pipe(dest(buildJsPath));
 }
 
