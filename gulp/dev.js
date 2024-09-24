@@ -6,6 +6,8 @@ const browserSync = require("browser-sync").create();
 const webpackStream = require("webpack-stream");
 // SASS
 const sass = require("gulp-sass")(require("sass"));
+const autoprefixer = require("autoprefixer");
+const postCss = require("gulp-postcss");
 // HTML
 const fileInclude = require("gulp-file-include");
 // Images
@@ -41,6 +43,8 @@ function fonts() {
 }
 
 function css() {
+  const plugins = [autoprefixer()];
+
   return src("./src/scss/main.scss", { sourcemaps: true })
     .pipe(
       sass({ silenceDeprecations: ["legacy-js-api"] }).on(
@@ -48,6 +52,7 @@ function css() {
         sass.logError
       )
     )
+    .pipe(postCss(plugins))
     .pipe(dest(buildCssPath, { sourcemaps: true }))
     .pipe(browserSync.stream());
 }
