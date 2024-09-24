@@ -27,6 +27,7 @@
     "gulp-svg-sprite": "^2.0.3",
     "gulp-ttf2woff2": "^4.0.1",
     "gulp-webp": "^4.0.1",
+    "panini": "^1.7.2",
     "postcss": "^8.4.47",
     "sass": "^1.78.0",
     "style-loader": "^4.0.0",

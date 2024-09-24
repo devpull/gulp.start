@@ -10,6 +10,7 @@ const autoprefixer = require("autoprefixer");
 const postCss = require("gulp-postcss");
 // HTML
 const fileInclude = require("gulp-file-include");
+const panini = require("panini");
 // Images
 const svgSprite = require("gulp-svg-sprite");
 const webp = require("gulp-webp");
@@ -57,20 +58,36 @@ function css() {
     .pipe(browserSync.stream());
 }
 
+// function html() {
+//   return src([
+//     "./src/html/**/*.html",
+//     "!./src/html/partials/*.html",
+//     "!./src/html/partials/templates/*.html",
+//   ])
+//     .pipe(
+//       fileInclude({
+//         prefix: "@@",
+//         basepath: "@file",
+//       })
+//     )
+//     .pipe(changedInPlace({ firstPass: true }))
+//     .pipe(dest(buildPath));
+// }
+
 function html() {
-  return src([
-    "./src/html/**/*.html",
-    "!./src/html/partials/*.html",
-    "!./src/html/partials/templates/*.html",
-  ])
+  panini.refresh();
+  return src("./src/html/pages/**/*.html")
     .pipe(
-      fileInclude({
-        prefix: "@@",
-        basepath: "@file",
+      panini({
+        root: "./src/html/pages/",
+        layouts: "./src/html/layouts/",
+        partials: "./src/html/partials/",
+        helpers: "./src/html/helpers/",
+        data: "./src/html/data/",
       })
     )
-    .pipe(changedInPlace({ firstPass: true }))
-    .pipe(dest(buildPath));
+    .pipe(dest(buildPath))
+    .pipe(browserSync.stream());
 }
 
 function js() {
@@ -140,10 +157,7 @@ function svg() {
 }
 
 function watcher() {
-  watch(["./src/html/**/*.{html,json}"], html).on(
-    "change",
-    browserSync.reload
-  );
+  watch(["./src/html/**/*.{html,json}"], html);
   watch("./src/scss/**/*.scss", css);
   watch("./src/js/**/*.js", js);
   watch(["./src/img/**/*", "!./src/img/svg/*"], img).on(
