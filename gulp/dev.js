@@ -86,8 +86,7 @@ function html() {
         data: "./src/html/data/",
       })
     )
-    .pipe(dest(buildPath))
-    .pipe(browserSync.stream());
+    .pipe(dest(buildPath));
 }
 
 function js() {
@@ -157,7 +156,7 @@ function svg() {
 }
 
 function watcher() {
-  watch(["./src/html/**/*.{html,json}"], html);
+  watch(["./src/html/**/*.{html,json}"], html).on("change", browserSync.reload);
   watch("./src/scss/**/*.scss", css);
   watch("./src/js/**/*.js", js);
   watch(["./src/img/**/*", "!./src/img/svg/*"], img).on(
