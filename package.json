@@ -12,7 +12,6 @@
     "gulp-changed": "^4.0.3",
     "gulp-changed-in-place": "^2.3.0",
     "gulp-debug": "^4.0.0",
-    "gulp-file-include": "^2.3.0",
     "gulp-fonter-2": "^0.3.0",
     "gulp-fontfacegen": "^1.0.7",
     "gulp-imagemin": "^7.1.0",

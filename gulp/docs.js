@@ -10,7 +10,7 @@ const autoprefixer = require("autoprefixer");
 const postCss = require("gulp-postcss");
 const cssnano = require("cssnano");
 // HTML
-const fileInclude = require("gulp-file-include");
+const panini = require("panini");
 // JS
 const webpackStream = require("webpack-stream");
 const babel = require("gulp-babel");
@@ -49,19 +49,17 @@ function css() {
 }
 
 function html() {
-  return src([
-    "./src/html/**/*.html",
-    "!./src/html/partials/*.html",
-    "!./src/html/partials/templates/*.html",
-  ])
+  panini.refresh();
+  return src("./src/html/pages/**/*.html")
     .pipe(
-      fileInclude({
-        prefix: "@@",
-        basepath: "@file",
+      panini({
+        root: "./src/html/pages/",
+        layouts: "./src/html/layouts/",
+        partials: "./src/html/partials/",
+        helpers: "./src/html/helpers/",
+        data: "./src/html/data/",
       })
     )
-    .pipe(changedInPlace({ firstPass: true }))
-    .pipe(debug({ title: "dev-html: " }))
     .pipe(dest(buildPath));
 }
 

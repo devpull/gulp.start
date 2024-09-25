@@ -9,7 +9,6 @@ const sass = require("gulp-sass")(require("sass"));
 const autoprefixer = require("autoprefixer");
 const postCss = require("gulp-postcss");
 // HTML
-const fileInclude = require("gulp-file-include");
 const panini = require("panini");
 // Images
 const svgSprite = require("gulp-svg-sprite");
@@ -57,22 +56,6 @@ function css() {
     .pipe(dest(buildCssPath, { sourcemaps: true }))
     .pipe(browserSync.stream());
 }
-
-// function html() {
-//   return src([
-//     "./src/html/**/*.html",
-//     "!./src/html/partials/*.html",
-//     "!./src/html/partials/templates/*.html",
-//   ])
-//     .pipe(
-//       fileInclude({
-//         prefix: "@@",
-//         basepath: "@file",
-//       })
-//     )
-//     .pipe(changedInPlace({ firstPass: true }))
-//     .pipe(dest(buildPath));
-// }
 
 function html() {
   panini.refresh();

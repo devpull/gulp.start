@@ -15,7 +15,7 @@ const webp = require("gulp-webp");
 const imagemin = require("gulp-imagemin");
 const svgSprite = require("gulp-svg-sprite");
 // HTML
-const fileInclude = require("gulp-file-include");
+const panini = require("panini");
 // Paths
 const buildPath = "./dist/";
 const buildCssPath = buildPath + "css/";
@@ -68,15 +68,15 @@ function minCss() {
 }
 
 function html() {
-  return src([
-    "./src/html/**/*.html",
-    "!./src/html/partials/*.html",
-    "!./src/html/partials/templates/*.html",
-  ])
+  panini.refresh();
+  return src("./src/html/pages/**/*.html")
     .pipe(
-      fileInclude({
-        prefix: "@@",
-        basepath: "@file",
+      panini({
+        root: "./src/html/pages/",
+        layouts: "./src/html/layouts/",
+        partials: "./src/html/partials/",
+        helpers: "./src/html/helpers/",
+        data: "./src/html/data/",
       })
     )
     .pipe(dest(buildPath));
