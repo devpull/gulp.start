@@ -8,12 +8,13 @@
   предложения бросил языком?
 </p>
 <svg class="svg-icons--heart-line-dims">
-  <use xlink:href="./img/svg/symbol.sprite.svg#icons--heart-line"></use>
+  <use xlink:href="{{root}}img/svg/symbol.sprite.svg#icons--heart-line"></use>
 </svg>
 <hr />
 {{> hero}}
 <picture>
   <source media="(max-width: 768px)" srcset="./img/welcome-bg.webp" />
-  <img src="./img/welcome-bg.jpg" alt="welcome" />
+  <img src="{{root}}img/welcome-bg.jpg" alt="welcome" />
 </picture>
-<script src="./js/index.bundle.js"></script>
+{{> cards}}
+<script src="{{root}}js/index.bundle.js"></script>
