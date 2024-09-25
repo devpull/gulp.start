@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Card 1",
+    "price": "$10",
+    "description": "A brief description of Card 1"
+  },
+  {
+    "title": "Card 2",
+    "price": "$15",
+    "description": "A brief description of Card 2"
+  },
+  {
+    "title": "Card 3",
+    "price": "$12",
+    "description": "A brief description of Card 3"
+  },
+  {
+    "title": "Card 4",
+    "price": "$8",
+    "description": "A brief description of Card 4"
+  },
+  {
+    "title": "Card 5",
+    "price": "$20",
+    "description": "A brief description of Card 5"
+  },
+  {
+    "title": "Card 6",
+    "price": "$18",
+    "description": "A brief description of Card 6"
+  },
+  {
+    "title": "Card 7",
+    "price": "$14",
+    "description": "A brief description of Card 7"
+  },
+  {
+    "title": "Card 8",
+    "price": "$11",
+    "description": "A brief description of Card 8"
+  },
+  {
+    "title": "Card 9",
+    "price": "$9",
+    "description": "A brief description of Card 9"
+  },
+  {
+    "title": "Card 10",
+    "price": "$17",
+    "description": "A brief description of Card 10"
+  }
+]
