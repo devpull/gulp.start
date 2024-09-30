@@ -1,4 +1,4 @@
-const { src, dest, watch } = require("gulp");
+const { src, dest, watch, parallel } = require("gulp");
 const del = require("del");
 const changedInPlace = require("gulp-changed-in-place");
 const changed = require("gulp-changed");
@@ -147,6 +147,10 @@ function watcher() {
     browserSync.reload
   );
   watch("./src/font/*.{woff,woff2}", fonts).on("change", browserSync.reload);
+  watch("./src/img/svg/**/*.svg", parallel(svg, img)).on(
+    "change",
+    browserSync.reload
+  );
 }
 
 function serve() {
