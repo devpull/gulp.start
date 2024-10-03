@@ -1,6 +1,7 @@
 # My Gulp Start 2024
 
 Build static sites with this simple gulp setup. Panini for HTML, SCSS, Webpack for JS, fonts.  
+Images to webp and images minification. Browsersync.
 
 ### Commands:  
 ```gulp``` - Development.  
