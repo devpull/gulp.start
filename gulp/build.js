@@ -10,6 +10,7 @@ const sass = require("gulp-sass")(require("sass"));
 const autoprefixer = require("autoprefixer");
 const postCss = require("gulp-postcss");
 const cssnano = require("cssnano");
+const sassGlob = require("gulp-sass-glob");
 // Images
 const webp = require("gulp-webp");
 const imagemin = require("gulp-imagemin");
@@ -43,6 +44,7 @@ function fonts() {
 
 function css() {
   return src("./src/scss/main.scss", { sourcemaps: true })
+    .pipe(sassGlob())
     .pipe(
       sass({ silenceDeprecations: ["legacy-js-api"] }).on(
         "error",
@@ -56,6 +58,7 @@ function minCss() {
   const plugins = [autoprefixer(), cssnano()];
 
   return src("./src/scss/main.scss", { sourcemaps: true })
+    .pipe(sassGlob())
     .pipe(
       sass({ silenceDeprecations: ["legacy-js-api"] }).on(
         "error",

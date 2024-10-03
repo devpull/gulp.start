@@ -8,6 +8,7 @@ const webpackStream = require("webpack-stream");
 const sass = require("gulp-sass")(require("sass"));
 const autoprefixer = require("autoprefixer");
 const postCss = require("gulp-postcss");
+const sassGlob = require("gulp-sass-glob");
 // HTML
 const panini = require("panini");
 // Images
@@ -46,6 +47,7 @@ function css() {
   const plugins = [autoprefixer()];
 
   return src("./src/scss/main.scss", { sourcemaps: true })
+    .pipe(sassGlob())
     .pipe(
       sass({ silenceDeprecations: ["legacy-js-api"] }).on(
         "error",

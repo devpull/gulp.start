@@ -9,6 +9,7 @@ const sass = require("gulp-sass")(require("sass"));
 const autoprefixer = require("autoprefixer");
 const postCss = require("gulp-postcss");
 const cssnano = require("cssnano");
+const sassGlob = require("gulp-sass-glob");
 // HTML
 const panini = require("panini");
 // JS
@@ -43,6 +44,7 @@ function css() {
   const plugins = [autoprefixer(), cssnano()];
 
   return src("./src/scss/main.scss", { sourcemaps: true })
+    .pipe(sassGlob())
     .pipe(sass().on("error", sass.logError))
     .pipe(postCss(plugins))
     .pipe(dest(buildCssPath, { sourcemaps: true }));
