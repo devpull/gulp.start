@@ -62,6 +62,7 @@ function css() {
 function html() {
   panini.refresh();
   return src("./src/html/pages/**/*.html")
+    .pipe(plumber())
     .pipe(
       panini({
         root: "./src/html/pages/",
