@@ -51,7 +51,7 @@ function css() {
         sass.logError
       )
     )
-    .pipe(dest(buildCssPath, { sourcemaps: true }));
+    .pipe(dest(buildCssPath, { sourcemaps: "." }));
 }
 
 function minCss() {
@@ -67,7 +67,7 @@ function minCss() {
     )
     .pipe(postCss(plugins))
     .pipe(rename({ extname: ".min.css" }))
-    .pipe(dest(buildCssPath, { sourcemaps: true }));
+    .pipe(dest(buildCssPath, { sourcemaps: "." }));
 }
 
 function html() {

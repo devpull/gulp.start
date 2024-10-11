@@ -55,7 +55,7 @@ function css() {
       )
     )
     .pipe(postCss(plugins))
-    .pipe(dest(buildCssPath, { sourcemaps: true }))
+    .pipe(dest(buildCssPath, { sourcemaps: "." }))
     .pipe(browserSync.stream());
 }
 

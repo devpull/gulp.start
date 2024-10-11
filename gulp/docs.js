@@ -47,7 +47,7 @@ function css() {
     .pipe(sassGlob())
     .pipe(sass().on("error", sass.logError))
     .pipe(postCss(plugins))
-    .pipe(dest(buildCssPath, { sourcemaps: true }));
+    .pipe(dest(buildCssPath, { sourcemaps: "." }));
 }
 
 function html() {
