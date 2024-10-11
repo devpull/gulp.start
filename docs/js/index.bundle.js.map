@@ -1,0 +1,1 @@
+{"version":3,"file":"index.bundle.js","mappings":"yBACEA,QAAQC,IAAI,S","sources":["webpack:///./src/js/modules/module.js"],"sourcesContent":["function hello() {\r\n  console.log('Hello!');\r\n}\r\n\r\nexport default hello;"],"names":["console","log"],"sourceRoot":""}
