@@ -1,6 +1,5 @@
 // Base (where order is important)
-@import "./base/reset";
-@import "./base/fontsAutoGen";
-
+@use "./base/reset";
+@use "./base/fontsAutoGen";
 // Partials
-@import "./partials/**/*.scss";
+@use "./partials/**/*.scss";

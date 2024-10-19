@@ -8,7 +8,7 @@ const webpackStream = require("webpack-stream");
 const sass = require("gulp-sass")(require("sass"));
 const autoprefixer = require("autoprefixer");
 const postCss = require("gulp-postcss");
-const sassGlob = require("gulp-sass-glob");
+const sassGlob = require("gulp-sass-glob-use-forward");
 // HTML
 const panini = require("panini");
 // Images
