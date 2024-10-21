@@ -86,6 +86,7 @@ function js() {
 
 function img() {
   return src("./src/img/**/*.{jpg,jpeg,png,gif}", { encoding: false })
+    .pipe(plumber())
     .pipe(changed(buildImgPath))
     .pipe(webp({ quality: 75 }))
     .pipe(dest(buildImgPath))
