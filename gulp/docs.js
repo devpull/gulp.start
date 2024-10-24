@@ -119,11 +119,11 @@ function revisionRewrite() {
 const svgConfig = {
   shape: {
     dimension: {
-      maxWidth: 32,
-      maxHeight: 32,
+      maxWidth: 24,
+      maxHeight: 24,
     },
     spacing: {
-      padding: 5,
+      padding: 0,
     },
     transform: [
       {
