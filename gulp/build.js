@@ -88,7 +88,7 @@ function html() {
 function js() {
   return src("./src/js/*.js")
     .pipe(babel())
-    .pipe(webpackStream(require("../webpack.config")))
+    .pipe(webpackStream(require("../webpack.prod")))
     .pipe(dest(buildJsPath));
 }
 

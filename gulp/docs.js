@@ -69,7 +69,7 @@ function js() {
   return src("./src/js/*.js")
     .pipe(plumber())
     .pipe(babel())
-    .pipe(webpackStream(require("./../webpack.config")))
+    .pipe(webpackStream(require("./../webpack.prod")))
     .pipe(changedInPlace({ firstPass: true }))
     .pipe(dest(buildJsPath));
 }

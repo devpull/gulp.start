@@ -78,7 +78,7 @@ function html() {
 function js() {
   return src("./src/js/*.js")
     .pipe(plumber())
-    .pipe(webpackStream(require("./../webpack.config")))
+    .pipe(webpackStream(require("./../webpack.dev")))
     .pipe(changedInPlace({ firstPass: true }))
     .pipe(dest(buildJsPath))
     .pipe(browserSync.stream());
